@@ -1,0 +1,90 @@
+url rpc = http://localhost:8080/rpc
+url login = http://localhost:8080/login
+
+
+add a person pour ajouter 
+
+{
+  "jsonrpc": "2.0",
+  "method": "addPerson",
+  "params": {
+    "nom": "{{$randomLastName}}",
+    "prenom": "{{$randomFirstName}}",
+    "dateNaissance": "1990-01-01",
+    "adresse": "{{$randomCity}}, {{$randomCountry}}",
+    "telephone": "{{$randomPhoneNumber}}"
+  },
+  "id": {{$randomInt}}
+}
+
+erreur de validation 
+
+{
+  "jsonrpc": "2.0",
+  "method": "addPerson",
+  "params": {
+    "nom": "",
+    "prenom": "",
+    "dateNaissance": "date-invalide",
+    "adresse": "",
+    "telephone": ""
+  },
+  "id": 201
+}
+
+invoquer une methode inexistant
+
+{
+  "jsonrpc": "2.0",
+  "method": "unknownMethod",
+  "params": {},
+  "id": 301
+}
+
+
+une requete mal foemr 
+
+{
+  "jsonrpc": "2.0",
+  "method": null,
+  "params": {},
+  "id": 401
+}
+
+recuperer une personne par id
+
+{
+  "jsonrpc": "2.0",
+  "method": "getPersonById", 
+  "params": {
+    "id": 1
+  },
+  "id": 2
+}
+
+Suppression
+
+{
+  "jsonrpc": "2.0",
+  "method": "deletePerson",
+  "params": {
+    "id": 1
+  },
+  "id": 5
+}
+
+modification d'information
+
+{
+  "jsonrpc": "2.0",
+  "method": "updatePerson",
+  "params": {
+    "id": 1,
+    "nom": "Dupont",
+    "prenom": "Jean-Pierre",
+    "dateNaissance": "1990-05-15",
+    "adresse": "789 Boulevard Haussmann, 75008 Paris",
+    "telephone": "+33111222333"
+  },
+  "id": 4
+}
